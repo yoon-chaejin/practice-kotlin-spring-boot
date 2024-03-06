@@ -1,12 +1,16 @@
 package com.heeheepresso.menu.domain.store.model
 
-import org.springframework.data.annotation.Id
-import org.springframework.data.relational.core.mapping.Table
+import jakarta.persistence.Embeddable
+import jakarta.persistence.Embedded
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.Id
 import java.time.LocalTime
 
-@Table("store")
-class Store(
+@Entity
+data class Store(
         @Id
+        @GeneratedValue
         var id: Long?,
         val name: String,
         val hasDecaffeinatedMenu: Boolean,
@@ -14,10 +18,13 @@ class Store(
         val isDeliveryAvailable: Boolean,
         val isDirectManagedStore: Boolean,
         val thumbnailUrl: String,
-//        val address: Address,
-//        val openingHours: List<OpeningHour>
+        @Embedded
+        val address: Address,
+        @Embedded
+        val openingHours: OpeningHour
 )
 
+@Embeddable
 data class Address(
         val roadName: String,
         val detail: String,
@@ -25,6 +32,7 @@ data class Address(
         val latitude: Float,
 )
 
+@Embeddable
 data class OpeningHour(
         val startTime: LocalTime,
         val endTime: LocalTime,

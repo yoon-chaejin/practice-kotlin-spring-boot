@@ -1,10 +1,13 @@
 package com.heeheepresso.menu.domain.store.service
 
+import com.heeheepresso.menu.domain.store.model.Address
+import com.heeheepresso.menu.domain.store.model.OpeningHour
 import com.heeheepresso.menu.domain.store.model.Store
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import java.time.LocalTime
 
 @SpringBootTest
 class StoreServiceTest @Autowired constructor(
@@ -22,9 +25,8 @@ class StoreServiceTest @Autowired constructor(
                 isDirectManagedStore = false,
                 isDeliveryAvailable = false,
                 thumbnailUrl = "url",
-//                address = Address(roadName = "서울 강남구 테헤란로4길 46", detail = "쌍용플래티넘 1층", longitude = 0.0F, latitude = 0.0F),
-//                openingHours = listOf(OpeningHour(LocalTime.of(9, 0), LocalTime.of(18,0))),
-        )
+                address = Address(roadName = "서울 강남구 테헤란로4길 46", detail = "쌍용플래티넘 1층", longitude = 0.0F, latitude = 0.0F),
+                openingHours = OpeningHour(LocalTime.of(9, 0), LocalTime.of(18,0)),        )
         // when
         val result = storeService.save(store)
 
@@ -44,8 +46,8 @@ class StoreServiceTest @Autowired constructor(
                 isDirectManagedStore = false,
                 isDeliveryAvailable = false,
                 thumbnailUrl = "url",
-//                address = Address(roadName = "서울 강남구 테헤란로4길 46", detail = "쌍용플래티넘 1층", longitude = 0.0F, latitude = 0.0F),
-//                openingHours = listOf(OpeningHour(LocalTime.of(9, 0), LocalTime.of(18,0))),
+                address = Address(roadName = "서울 강남구 테헤란로4길 46", detail = "쌍용플래티넘 1층", longitude = 0.0F, latitude = 0.0F),
+                openingHours = OpeningHour(LocalTime.of(9, 0), LocalTime.of(18,0)),
         )
         val givenStore = storeService.save(store)
 
